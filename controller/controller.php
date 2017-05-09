@@ -17,8 +17,8 @@ class Controller {
         foreach($this->data as $key => $value) {
             ${$key} = $value;
         }
-
-        require_once($this->root_location.'/view/'.$view.'.php');
+        
+        include($this->root_location.'/view/'.$view.'.php');
     }
 }
 ?>
