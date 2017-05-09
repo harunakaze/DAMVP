@@ -16,7 +16,8 @@
         protected $controller;
         protected $action        = self::DEFAULT_ACTION;
         protected $params        = array();
-        protected $basePath      = "damvp/index.php";
+        protected $baseLocation  = "damvp";
+        protected $baseAccess    = "/index.php";
 
         public function __construct() {
             // AUTOLOAD THEM ALL
@@ -41,8 +42,12 @@
 
             $path = preg_replace('/[^a-zA-Z0-9]\//', "", $path);
 
-            if (strpos($path, $this->basePath) === 0) {
-                $path = substr($path, strlen($this->basePath));
+            if (strpos($path, $this->baseLocation) === 0) {
+                $path = substr($path, strlen($this->baseLocation));
+            }
+
+            if (strpos($path, $this->baseAccess) === 0) {
+                $path = substr($path, strlen($this->baseAccess));
             }
 
             // Trim request, especially preceding "/"
@@ -53,7 +58,7 @@
             if (isset($controller) && !empty($controller)) {
                 $this->setController($controller);
             } else {
-                // A bug, setController must be called.
+                // A bug, setController must always be called.
                 $this->setController(self::DEFAULT_CONTROLLER);
             }
             if (isset($action)) {
