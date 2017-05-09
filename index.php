@@ -49,7 +49,7 @@
             if (isset($controller) && !empty($controller)) {
                 $this->setController($controller);
             } else {
-                // require_once bug, setController must be called.
+                // A bug, setController must be called.
                 $this->setController(self::DEFAULT_CONTROLLER);
             }
             if (isset($action)) {
@@ -61,12 +61,10 @@
         }
 
         public function setController($controller) {
-            //require_once('controller/' . $controller . '.php');
-
             $controller = ucfirst($controller) . 'Controller';
             if (!class_exists($controller)) {
                 throw new InvalidArgumentException(
-                    "The action controller '$controller' has not been defined.");
+                    "The controller '$controller' has not been defined.");
             }
             $this->controller = $controller;
             return $this;

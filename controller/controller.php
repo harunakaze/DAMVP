@@ -9,11 +9,6 @@ class Controller {
     }
 
     protected function loadModel($model) {
-        //require_once($this->root_location.'/model/'.$model.'.php');
-        // spl_autoload_register(function ($model) {
-        //     include 'model/' . $model . '.php';
-        // });
-
         $modelName = ucfirst($model).'Model';
         return new $modelName();
     }
