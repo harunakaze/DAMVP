@@ -5,4 +5,5 @@
     require_once($BASE_DIR.'/model/Database.php');
     require_once($BASE_DIR.'/model/Model.php');
     require_once($BASE_DIR.'/controller/Controller.php');
+    require_once($BASE_DIR.'/config/autoload.php');
 ?>

@@ -7,6 +7,7 @@
     // --     #     # #  #         --
     // --    #     # #   #         --
     // -- ######################## --
+    // Saka Wibawa Putra 2017
     
     require_once('config/include.php');
     class DAMVP {
@@ -20,20 +21,6 @@
         protected $baseAccess    = "/index.php";
 
         public function __construct() {
-            // AUTOLOAD THEM ALL
-            spl_autoload_register(function ($file) {
-                $paths = array(
-                    'controller/',
-                    'model/'
-                );
-
-                foreach($paths as $path) {
-                    if(file_exists($path . $file . '.php')) {
-                        include $path . $file . '.php';
-                    }
-                }
-            });
-
             $this->parseUri();
         }
 
