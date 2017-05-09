@@ -1,10 +1,5 @@
 <?php
-define('DB_HOST', '188.166.224.30');
-define('DB_PORT', '5432');
-define('DB_NAME', 'tokokerentwelve');
-define('DB_USER', 'tokokeren');
-define('DB_PASS', 'PasswordPsqlTokoKeren');
-
+// This *probably* should not be a singleton, but well one things leads to another...
 class DB
 {
         protected static $instance = null;
@@ -26,8 +21,6 @@ class DB
                     $dsn = 'pgsql:host='.DB_HOST.';port='.DB_PORT.';dbname='.DB_NAME;
                     self::$instance = new PDO($dsn, DB_USER, DB_PASS, $opt);
                     self::$instance->query("SET search_path TO tokokerenschema");
-
-                    echo json_encode(array('db_isconnected' => true));
                 } catch(PDOException $ex) {
                     die(json_encode(array('db_isconnected' => false, 'message' => 'Unable to connect : ' . $ex)));
                 }
