@@ -7,6 +7,7 @@
     // --     #     # #  #         --
     // --    #     # #   #         --
     // -- ######################## --
+    
     require_once('config/include.php');
     class DAMVP {
         const DEFAULT_CONTROLLER = "index";
@@ -20,12 +21,15 @@
         public function __construct() {
             // AUTOLOAD THEM ALL
             spl_autoload_register(function ($file) {
-                if(file_exists('controller/' . $file . '.php')) {
-                    include 'controller/' . $file . '.php';
-                } elseif (file_exists('model/' . $file . '.php')) {
-                    include 'model/' . $file . '.php';
-                } else {
-                    die("Classes not found! : " . $file);
+                $paths = array(
+                    'controller/',
+                    'model/'
+                );
+
+                foreach($paths as $path) {
+                    if(file_exists($path . $file . '.php')) {
+                        include $path . $file . '.php';
+                    }
                 }
             });
 
