@@ -5,9 +5,9 @@
 class KategoriUtamaModel extends Model {
     public function selectKategoriWithKode($kode) {
         /*
-            Untuk buat query silakan pake class singleton DB, yang tak adaptasi dari https://phpdelusions.net
+            Untuk buat query silakan pake class singleton DB, yang di adaptasi dari https://phpdelusions.net
             DB merupakan class wrapper untuk PDO
-            
+
             Contoh lain penggunaan:
             https://phpdelusions.net/pdo/pdo_wrapper
         */

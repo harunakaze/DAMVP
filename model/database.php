@@ -20,7 +20,7 @@ class DB
                 try {
                     $dsn = 'pgsql:host='.DB_HOST.';port='.DB_PORT.';dbname='.DB_NAME;
                     self::$instance = new PDO($dsn, DB_USER, DB_PASS, $opt);
-                    self::$instance->query("SET search_path TO tokokerenschema");
+                    self::$instance->query("SET search_path TO ".DB_SCHEMA);
                 } catch(PDOException $ex) {
                     die(json_encode(array('db_isconnected' => false, 'message' => 'Unable to connect : ' . $ex)));
                 }
